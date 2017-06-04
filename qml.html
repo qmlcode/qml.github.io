@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qml package &mdash; QML 0.2.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="QML 0.2.10 documentation" href="index.html"/>
+        <link rel="up" title="qml" href="modules.html"/>
+        <link rel="prev" title="qml" href="modules.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QML
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">qml</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">qml package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.arad">qml.arad module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.arad_kernels">qml.arad_kernels module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.compound">qml.compound module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.data">qml.data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.distance">qml.distance module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.kernels">qml.kernels module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.math">qml.math module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.representations">qml.representations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml.wrappers">qml.wrappers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-qml">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qml-main-module">QML main module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">qml package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.arad">qml.arad module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.arad_kernels">qml.arad_kernels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.compound">qml.compound module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.data">qml.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.distance">qml.distance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.kernels">qml.kernels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.math">qml.math module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.representations">qml.representations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.wrappers">qml.wrappers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qml-main-module">QML main module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QML</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">qml</a> &raquo;</li>
+        
+      <li>qml package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/qml.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qml-package">
+<h1>qml package<a class="headerlink" href="#qml-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qml.arad">
+<span id="qml-arad-module"></span><h2>qml.arad module<a class="headerlink" href="#module-qml.arad" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qml.arad.ARAD">
+<em class="property">class </em><code class="descclassname">qml.arad.</code><code class="descname">ARAD</code><span class="sig-paren">(</span><em>maxMolSize=30</em>, <em>maxAts=30</em>, <em>cut=5.0</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.arad.ARAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="qml.arad.ARAD.describe">
+<code class="descname">describe</code><span class="sig-paren">(</span><em>coords</em>, <em>ocupationList</em>, <em>cell=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.arad.ARAD.describe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.arad.ARAD.getAngle">
+<code class="descname">getAngle</code><span class="sig-paren">(</span><em>sp</em>, <em>norms</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.arad.ARAD.getAngle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.arad_kernels">
+<span id="qml-arad-kernels-module"></span><h2>qml.arad_kernels module<a class="headerlink" href="#module-qml.arad_kernels" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.arad_kernels.get_atomic_kernels_arad">
+<code class="descclassname">qml.arad_kernels.</code><code class="descname">get_atomic_kernels_arad</code><span class="sig-paren">(</span><em>X1</em>, <em>X2</em>, <em>Z1</em>, <em>Z2</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.arad_kernels.get_atomic_kernels_arad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K for atomic ARAD
+descriptors for a list of different sigmas.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<p>X1 – np.array of ARAD descriptors for molecules in set 1.
+X2 – np.array of ARAD descriptors for molecules in set 2.
+Z1 – List of lists of nuclear charges for molecules in set 1.
+Z2 – List of lists of nuclear charges for molecules in set 2.
+sigmas – List of sigma for which to calculate the Kernel matrices.</p>
+<p>K – The kernel matrices for each sigma (3D-array, Ns x N1 x N2)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.arad_kernels.get_atomic_symmetric_kernels_arad">
+<code class="descclassname">qml.arad_kernels.</code><code class="descname">get_atomic_symmetric_kernels_arad</code><span class="sig-paren">(</span><em>X1</em>, <em>Z1</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.arad_kernels.get_atomic_symmetric_kernels_arad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K for atomic ARAD
+descriptors for a list of different sigmas.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<p>X1 – np.array of ARAD descriptors for molecules in set 1.
+Z1 – List of lists of nuclear charges for molecules in set 1.
+sigmas – List of sigma for which to calculate the Kernel matrices.</p>
+<p>K – The kernel matrices for each sigma (3D-array, Ns x N1 x N2)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.compound">
+<span id="qml-compound-module"></span><h2>qml.compound module<a class="headerlink" href="#module-qml.compound" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qml.compound.Compound">
+<em class="property">class </em><code class="descclassname">qml.compound.</code><code class="descname">Compound</code><span class="sig-paren">(</span><em>xyz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="qml.compound.Compound.generate_arad_representation">
+<code class="descname">generate_arad_representation</code><span class="sig-paren">(</span><em>size=23</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.generate_arad_representation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.compound.Compound.generate_atomic_coulomb_matrix">
+<code class="descname">generate_atomic_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em>, <em>sorting=’row-norm’</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.generate_atomic_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.compound.Compound.generate_bob">
+<code class="descname">generate_bob</code><span class="sig-paren">(</span><em>size=23</em>, <em>asize={‘H’: 16</em>, <em>’C’: 7</em>, <em>’S’: 1</em>, <em>’O’: 3</em>, <em>’N’: 3}</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.generate_bob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.compound.Compound.generate_coulomb_matrix">
+<code class="descname">generate_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em>, <em>sorting=’row-norm’</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.generate_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.compound.Compound.generate_eigenvalue_coulomb_matrix">
+<code class="descname">generate_eigenvalue_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.generate_eigenvalue_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qml.compound.Compound.read_xyz">
+<code class="descname">read_xyz</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.compound.Compound.read_xyz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.data">
+<span id="qml-data-module"></span><h2>qml.data module<a class="headerlink" href="#module-qml.data" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-qml.distance">
+<span id="qml-distance-module"></span><h2>qml.distance module<a class="headerlink" href="#module-qml.distance" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.distance.l2_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">l2_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.l2_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the L2-distances between two
+Numpy arrays of representations.</p>
+<p>A – np.array of np.array of representations.
+B – np.array of np.array of representations.</p>
+<p>D – The distance matrix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.distance.manhattan_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">manhattan_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.manhattan_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Manhattan distances between two
+Numpy arrays of representations.</p>
+<p>A – np.array of np.array of representations.
+B – np.array of np.array of representations.</p>
+<p>D – The distance matrix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.distance.p_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">p_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>p=2</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.p_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the p-norms between two
+Numpy arrays of representations.</p>
+<p>A – np.array of np.array of representations.
+B – np.array of np.array of representations.
+p – the norm order (as integer or float)</p>
+<p>D – The distance matrix.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.kernels">
+<span id="qml-kernels-module"></span><h2>qml.kernels module<a class="headerlink" href="#module-qml.kernels" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.kernels.gaussian_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">gaussian_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.gaussian_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where K_ij:</p>
+<blockquote>
+<div>K_ij = exp(-0.5 * sigma**(-2) * || A_i - B_j ||_2)</div></blockquote>
+<p>Where A_i and B_j are descriptor vectors.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<p>NOTE: A and B need not be input as Fortran contiguous arrays.</p>
+<p>A – np.array of np.array of descriptors.
+B – np.array of np.array of descriptors.
+sigma – The value of sigma in the kernel matrix.</p>
+<p>K – The Gaussian kernel matrix.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.laplacian_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">laplacian_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.laplacian_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Laplacian kernel matrix K, where K_ij:</p>
+<blockquote>
+<div>K_ij = exp(-1 * sigma**(-1) * || A_i - B_j ||_1)</div></blockquote>
+<p>Where A_i and B_j are descriptor vectors.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<p>NOTE: A and B need not be input as Fortran contiguous arrays.</p>
+<p>A – np.array of np.array of descriptors.
+B – np.array of np.array of descriptors.
+sigma – The value of sigma in the kernel matrix.</p>
+<p>K – The Laplacian kernel matrix.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.math">
+<span id="qml-math-module"></span><h2>qml.math module<a class="headerlink" href="#module-qml.math" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.math.cho_solve">
+<code class="descclassname">qml.math.</code><code class="descname">cho_solve</code><span class="sig-paren">(</span><em>A</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.math.cho_solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves [A x = y] for x using a Cholesky decomposition
+via calls to LAPACK dpotrf and dpotrs in the F2PY module.</p>
+<p>A – the A-matrix (symmetric and positive definite).
+y – the right-hand side of the equation (vector).</p>
+<p>x – the vector for with the equation has been solved.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.representations">
+<span id="qml-representations-module"></span><h2>qml.representations module<a class="headerlink" href="#module-qml.representations" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.representations.generate_atomic_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_atomic_coulomb_matrix</code><span class="sig-paren">(</span><em>coordinates</em>, <em>nuclear_charges</em>, <em>size=23</em>, <em>sorting=’row-norm’</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_atomic_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_bob">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_bob</code><span class="sig-paren">(</span><em>coordinates</em>, <em>nuclear_charges</em>, <em>atomtypes</em>, <em>size=23</em>, <em>asize={‘H’: 16</em>, <em>’C’: 7</em>, <em>’S’: 1</em>, <em>’O’: 3</em>, <em>’N’: 3}</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_bob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_coulomb_matrix</code><span class="sig-paren">(</span><em>coordinates</em>, <em>nuclear_charges</em>, <em>size=23</em>, <em>sorting=’row-norm’</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_eigenvalue_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_eigenvalue_coulomb_matrix</code><span class="sig-paren">(</span><em>coordinates</em>, <em>nuclear_charges</em>, <em>size=23</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_eigenvalue_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.vector_to_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">vector_to_matrix</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.vector_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qml.wrappers">
+<span id="qml-wrappers-module"></span><h2>qml.wrappers module<a class="headerlink" href="#module-qml.wrappers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.wrappers.arad_kernels">
+<code class="descclassname">qml.wrappers.</code><code class="descname">arad_kernels</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.arad_kernels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.arad_symmetric_kernels">
+<code class="descclassname">qml.wrappers.</code><code class="descname">arad_symmetric_kernels</code><span class="sig-paren">(</span><em>mols1</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.arad_symmetric_kernels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.get_atomic_kernels_gaussian">
+<code class="descclassname">qml.wrappers.</code><code class="descname">get_atomic_kernels_gaussian</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.get_atomic_kernels_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.get_atomic_kernels_laplacian">
+<code class="descclassname">qml.wrappers.</code><code class="descname">get_atomic_kernels_laplacian</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.get_atomic_kernels_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-qml">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-qml" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qml-main-module">
+<h3>QML main module<a class="headerlink" href="#qml-main-module" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Provides</dt>
+<dd><ol class="first last arabic simple">
+<li>Compound-class</li>
+<li>representations</li>
+<li>kernels</li>
+<li>math</li>
+<li>distance</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="qml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Anders S. Christensen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.10',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
