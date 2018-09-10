@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; QML 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Python API documentation" href="qml.html" />
+    <link rel="prev" title="QML Tutorial" href="tutorial.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GETTING STARTED:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing use of QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">QML Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generating-representations-using-the-compound-class">Generating representations using the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-representations-via-the-qml-representations-module">Generating representations via the <code class="docutils literal notranslate"><span class="pre">qml.representations</span></code> module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calculating-a-gaussian-kernel">Calculating a Gaussian kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calculating-a-gaussian-kernel-using-a-local-representation">Calculating a Gaussian kernel using a local representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-the-slatm-representation">Generating the SLATM representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-the-fchl-representation">Generating the FCHL representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-the-fchl-kernel">Generating the FCHL kernel</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">SOURCE DOCUMENTATION:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qml.html">Python API documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="generating-representations-using-the-compound-class">
+<h2>Generating representations using the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class<a class="headerlink" href="#generating-representations-using-the-compound-class" title="Permalink to this headline">¶</a></h2>
+<p>The following example demonstrates how to generate a representation via
+the <code class="docutils literal notranslate"><span class="pre">qml.Compound</span></code> class.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in an xyz or cif file.</span>
+<span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;water.xyz&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate a molecular coulomb matrices sorted by row norm.</span>
+<span class="n">water</span><span class="o">.</span><span class="n">generate_coulomb_matrix</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sorting</span><span class="o">=</span><span class="s2">&quot;row-norm&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">water</span><span class="o">.</span><span class="n">representation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Might print the following representation:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">73.51669472</span>   <span class="mf">8.3593106</span>    <span class="mf">0.5</span>          <span class="mf">8.35237809</span>   <span class="mf">0.66066557</span>   <span class="mf">0.5</span>
+   <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>
+   <span class="mf">0.</span>           <span class="mf">0.</span>        <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-representations-via-the-qml-representations-module">
+<h2>Generating representations via the <code class="docutils literal notranslate"><span class="pre">qml.representations</span></code> module<a class="headerlink" href="#generating-representations-via-the-qml-representations-module" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qml.representations</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># Dummy coordinates for a water molecule</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.464</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">1.056</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mf">0.878</span><span class="p">,</span> <span class="mf">1.218</span><span class="p">,</span> <span class="mf">0.498</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mf">2.319</span><span class="p">,</span> <span class="mf">1.126</span><span class="p">,</span> <span class="mf">0.952</span><span class="p">]])</span>
+
+<span class="c1"># Oxygen, Hydrogen, Hydrogen</span>
+<span class="n">nuclear_charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Generate a molecular coulomb matrices sorted by row norm.</span>
+<span class="n">cm1</span> <span class="o">=</span> <span class="n">generate_coulomb_matrix</span><span class="p">(</span><span class="n">nuclear_charges</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span>
+                                <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sorting</span><span class="o">=</span><span class="s2">&quot;row-norm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting Coulomb-matrix for water:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">73.51669472</span>   <span class="mf">8.3593106</span>    <span class="mf">0.5</span>          <span class="mf">8.35237809</span>   <span class="mf">0.66066557</span>   <span class="mf">0.5</span>
+   <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>
+   <span class="mf">0.</span>           <span class="mf">0.</span>        <span class="p">]</span>
+</pre></div>
+</div>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate all atomic coulomb matrices sorted by distance to</span>
+<span class="c1"># query atom.</span>
+<span class="n">cm2</span> <span class="o">=</span> <span class="n">generate_atomic_coulomb_matrix</span><span class="p">(</span><span class="n">atomtypes</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span>
+                                <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">cm2</span>
+</pre></div>
+</div>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">73.51669472</span>   <span class="mf">8.3593106</span>    <span class="mf">0.5</span>          <span class="mf">8.35237809</span>   <span class="mf">0.66066557</span>   <span class="mf">0.5</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">0.5</span>          <span class="mf">8.3593106</span>   <span class="mf">73.51669472</span>   <span class="mf">0.66066557</span>   <span class="mf">8.35237809</span>   <span class="mf">0.5</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">0.5</span>          <span class="mf">8.35237809</span>  <span class="mf">73.51669472</span>   <span class="mf">0.66066557</span>   <span class="mf">8.3593106</span>    <span class="mf">0.5</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>
+    <span class="mf">0.</span>           <span class="mf">0.</span>           <span class="mf">0.</span>        <span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calculating-a-gaussian-kernel">
+<h2>Calculating a Gaussian kernel<a class="headerlink" href="#calculating-a-gaussian-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The input for most of the kernels in QML is a numpy array, where the first dimension is the number of representations, and the second dimension is the size of each representation. An brief example is presented here, where <code class="docutils literal notranslate"><span class="pre">compounds</span></code> is a list of <code class="docutils literal notranslate"><span class="pre">Compound()</span></code> objects:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qml.kernels</span> <span class="k">import</span> <span class="n">gaussian_kernel</span>
+
+<span class="c1"># Generate a numpy-array of the representation</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">representation</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">compounds</span><span class="p">])</span>
+
+<span class="c1"># Kernel-width</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="c1"># Calculate the kernel-matrix</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calculating-a-gaussian-kernel-using-a-local-representation">
+<h2>Calculating a Gaussian kernel using a local representation<a class="headerlink" href="#calculating-a-gaussian-kernel-using-a-local-representation" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to calculate the kernel matrix using an explicit, local representation is via the wrappers module. Note that here the sigmas is a list of sigmas, and the result is a kernel for each sigma. The following examples currently work with the atomic coulomb matrix representation and the local SLATM representation:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qml.kernels</span> <span class="k">import</span> <span class="n">get_local_kernels_gaussian</span>
+
+<span class="c1"># Assume the QM7 dataset is loaded into a list of Compound()</span>
+<span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">qm7</span><span class="p">:</span>
+
+    <span class="c1"># Generate the desired representation for each compound</span>
+    <span class="n">compound</span><span class="o">.</span><span class="n">generate_atomic_coulomb_matrix</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s2">&quot;row-norm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Make a big array with all the atomic representations</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">representation</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">qm7</span><span class="p">])</span>
+
+<span class="c1"># Make an array with the number of atoms in each compound</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">natoms</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">qm7</span><span class="p">])</span>
+
+<span class="c1"># List of kernel-widths</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the kernel-matrix</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">get_local_kernels_gaussian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7101</span><span class="p">,</span> <span class="mi">7101</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">mol.representation</span></code> is just a 1D numpy array.</p>
+</div>
+<div class="section" id="generating-the-slatm-representation">
+<h2>Generating the SLATM representation<a class="headerlink" href="#generating-the-slatm-representation" title="Permalink to this headline">¶</a></h2>
+<p>The Spectrum of London and Axillrod-Teller-Muto potential (SLATM) representation requires additional input to reduce the size of the representation.
+This input (the types of many-body terms) is generate via the <code class="docutils literal notranslate"><span class="pre">get_slatm_mbtypes()</span></code> function. The function takes a list of the nuclear charges for each molecule in the dataset as input. E.g.:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.representations</span> <span class="k">import</span> <span class="n">get_slatm_mbtypes</span>
+
+<span class="c1"># Assume &#39;qm7&#39; is a list of Compound() objects.</span>
+<span class="n">mbtypes</span> <span class="o">=</span> <span class="n">get_slatm_mbtypes</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">nuclear_charges</span> <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">qm7</span><span class="p">])</span>
+
+<span class="c1"># Assume the QM7 dataset is loaded into a list of Compound()</span>
+<span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">qm7</span><span class="p">:</span>
+
+    <span class="c1"># Generate the desired representation for each compound</span>
+    <span class="n">compound</span><span class="o">.</span><span class="n">generate_slatm</span><span class="p">(</span><span class="n">mbtypes</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">local</span></code> keyword in this example specifies that a local representation is produced. Alternatively the SLATM representation can be generate via the <code class="docutils literal notranslate"><span class="pre">qml.representations</span></code> module:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.representations</span> <span class="k">import</span> <span class="n">generate_slatm</span>
+
+<span class="c1"># Dummy coordinates</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Dummy nuclear charges</span>
+<span class="n">nuclear_charges</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Dummy mbtypes</span>
+<span class="n">mbtypes</span> <span class="o">=</span> <span class="n">get_slatm_mbtypes</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+
+<span class="c1"># Generate one representation</span>
+<span class="n">rep</span> <span class="o">=</span> <span class="n">generate_slatm</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">nuclear_charges</span><span class="p">,</span> <span class="n">mbtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">coordinates</span></code> is an Nx3 numpy array, and <code class="docutils literal notranslate"><span class="pre">nuclear_charges</span></code> is simply a list of charges.</p>
+</div>
+<div class="section" id="generating-the-fchl-representation">
+<h2>Generating the FCHL representation<a class="headerlink" href="#generating-the-fchl-representation" title="Permalink to this headline">¶</a></h2>
+<p>The FCHL representation does not have an explicit representation in the form of a vector, and the kernel elements must be calculated analytically in a separate kernel function.
+The syntax is analogous to the explicit representations (e.g. Coulomb matrix, BoB, SLATM, etc), but is handled by kernels from the separate <code class="docutils literal notranslate"><span class="pre">qml.fchl</span></code> module.</p>
+<p>The code below show three ways to create the input representations for the FHCL kernel functions.</p>
+<p>First using the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assume the dataset is loaded into a list of Compound()</span>
+<span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">:</span>
+
+    <span class="c1"># Generate the desired representation for each compound, cut off in angstrom</span>
+    <span class="n">compound</span><span class="o">.</span><span class="n">generate_fchl_representation</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">cut_off</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="c1"># Make Numpy array of the representation, which can be parsed to the kernel</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">representation</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The dimensions of the array should be <code class="docutils literal notranslate"><span class="pre">(number_molecules,</span> <span class="pre">size,</span> <span class="pre">5,</span> <span class="pre">size)</span></code>, where <code class="docutils literal notranslate"><span class="pre">size</span></code> is the
+size keyword used when generating the representations.</p>
+<p>In addition to using the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class to generate the representations, FCHL representations can also be generated via the <code class="docutils literal notranslate"><span class="pre">qml.fchl.generate_fchl_representation()</span></code> function, using similar notation to the functions in the <code class="docutils literal notranslate"><span class="pre">qml.representations.*</span></code> functions.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">generate_representation</span>
+
+<span class="c1"># Dummy coordinates for a water molecule</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.464</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">1.056</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mf">0.878</span><span class="p">,</span> <span class="mf">1.218</span><span class="p">,</span> <span class="mf">0.498</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mf">2.319</span><span class="p">,</span> <span class="mf">1.126</span><span class="p">,</span> <span class="mf">0.952</span><span class="p">]])</span>
+
+<span class="c1"># Oxygen, Hydrogen, Hydrogen</span>
+<span class="n">nuclear_charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">rep</span> <span class="o">=</span> <span class="n">generate_representation</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">nuclear_charges</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To create the representation for a crystal, the notation is as follows:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">generate_representation</span>
+
+<span class="c1"># Dummy fractional coordinates</span>
+<span class="n">fractional_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[[</span> <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">0.</span>        <span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.75000042</span><span class="p">,</span>  <span class="mf">0.50000027</span><span class="p">,</span>  <span class="mf">0.25000015</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.15115386</span><span class="p">,</span>  <span class="mf">0.81961403</span><span class="p">,</span>  <span class="mf">0.33154037</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.51192691</span><span class="p">,</span>  <span class="mf">0.18038651</span><span class="p">,</span>  <span class="mf">0.3315404</span> <span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.08154025</span><span class="p">,</span>  <span class="mf">0.31961376</span><span class="p">,</span>  <span class="mf">0.40115401</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.66846017</span><span class="p">,</span>  <span class="mf">0.81961403</span><span class="p">,</span>  <span class="mf">0.48807366</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.08154025</span><span class="p">,</span>  <span class="mf">0.68038678</span><span class="p">,</span>  <span class="mf">0.76192703</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.66846021</span><span class="p">,</span>  <span class="mf">0.18038651</span><span class="p">,</span>  <span class="mf">0.84884672</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.23807355</span><span class="p">,</span>  <span class="mf">0.31961376</span><span class="p">,</span>  <span class="mf">0.91846033</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.59884657</span><span class="p">,</span>  <span class="mf">0.68038678</span><span class="p">,</span>  <span class="mf">0.91846033</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.50000031</span><span class="p">,</span>  <span class="mf">0.</span>        <span class="p">,</span>  <span class="mf">0.50000031</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">0.25000015</span><span class="p">,</span>  <span class="mf">0.50000027</span><span class="p">,</span>  <span class="mf">0.75000042</span><span class="p">]]</span>
+    <span class="p">)</span>
+
+<span class="c1"># Dummy nuclear charges</span>
+<span class="n">nuclear_charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span><span class="mi">58</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+    <span class="p">)</span>
+
+<span class="c1"># Dummy unit cell</span>
+<span class="n">unit_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[[</span> <span class="mf">3.699168</span><span class="p">,</span>  <span class="mf">3.699168</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.255938</span><span class="p">],</span>
+         <span class="p">[</span> <span class="mf">3.699168</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.699168</span><span class="p">,</span>  <span class="mf">3.255938</span><span class="p">],</span>
+         <span class="p">[</span><span class="o">-</span><span class="mf">3.699168</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.699168</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.255938</span><span class="p">]]</span>
+    <span class="p">)</span>
+
+<span class="c1"># Generate the representation</span>
+<span class="n">rep</span> <span class="o">=</span> <span class="n">generate_representation</span><span class="p">(</span><span class="n">fractional_coordinates</span><span class="p">,</span> <span class="n">nuclear_charges</span><span class="p">,</span>
+        <span class="n">cell</span><span class="o">=</span><span class="n">unit_cell</span><span class="p">,</span> <span class="n">neighbors</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cut_distance</span><span class="o">=</span><span class="mf">7.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The neighbors keyword is the max number of atoms with the cutoff-distance</p>
+</div>
+<div class="section" id="generating-the-fchl-kernel">
+<h2>Generating the FCHL kernel<a class="headerlink" href="#generating-the-fchl-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The following example demonstrates how to calculate the local FCHL kernel elements between FCHL representations. <code class="docutils literal notranslate"><span class="pre">X1</span></code> and <code class="docutils literal notranslate"><span class="pre">X2</span></code> are numpy arrays with the shape <code class="docutils literal notranslate"><span class="pre">(number_compounds,max_size,</span> <span class="pre">5,neighbors)</span></code>, as generated in one of the previous examples. You MUST use the same, or larger,&nbsp;cut-off distance to generate the representation, as to calculate the kernel.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">get_local_kernels</span>
+
+<span class="c1"># You can get kernels for multiple kernel-widths</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the kernel-matrices for each sigma</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">get_local_kernels</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">,</span> <span class="n">cut_distance</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As output you will get a kernel for each kernel-width.</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case <code class="docutils literal notranslate"><span class="pre">X1</span></code> and <code class="docutils literal notranslate"><span class="pre">X2</span></code> are identical, K will be symmetrical. This is handled by a separate function with exploits this symmetry (thus being twice as fast).</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">get_local_symmetric_kernels</span>
+
+<span class="c1"># You can get kernels for multiple kernel-widths</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the kernel-matrices for each sigma</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">get_local_kernels</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">,</span> <span class="n">cut_distance</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to the local kernel, the FCHL module also provides kernels for atomic properties (e.g. chemical shifts, partial charges, etc). These have the name “atomic”, rather than “local”.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">get_atomic_kernels</span>
+<span class="kn">from</span> <span class="nn">qml.fchl</span> <span class="k">import</span> <span class="n">get_atomic_symmetric_kernels</span>
+</pre></div>
+</div>
+<p>The only difference between the local and atomic kernels is the shape of the input.
+Since the atomic kernel outputs kernels with atomic resolution, the atomic input has the shape <code class="docutils literal notranslate"><span class="pre">(number_atoms,</span> <span class="pre">5,</span> <span class="pre">size)</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qml.html" class="btn btn-neutral float-right" title="Python API documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial.html" class="btn btn-neutral" title="QML Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Anders S. Christensen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

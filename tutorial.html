@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>QML Tutorial &mdash; QML 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Citing use of QML" href="citation.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GETTING STARTED:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing use of QML</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QML Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#theory">Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-exercises">Tutorial exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-1-representations">Exercise 1: Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-2-kernels">Exercise 2: Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-3-regression">Exercise 3: Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-4-prediction">Exercise 4: Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-5-learning-curves">Exercise 5: Learning curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-6-delta-learning">Exercise 6: Delta learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SOURCE DOCUMENTATION:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qml.html">Python API documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>QML Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qml-tutorial">
+<h1>QML Tutorial<a class="headerlink" href="#qml-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial is a general introduction to kernel-ridge regression with QML.</p>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>Regression model of some property, <span class="math notranslate nohighlight">\(y\)</span>, for some system, <span class="math notranslate nohighlight">\(\widetilde{\mathbf{X}}\)</span> - this could correspond to e.g. the atomization energy of a molecule:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(y\left(\widetilde{\mathbf{X}} \right) = \sum_i \alpha_i \  K\left( \widetilde{\mathbf{X}}, \mathbf{X}_i\right)\)</span></div></blockquote>
+<p>E.g. Using Gaussian kernel function with Frobenius norm:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = K\left( \mathbf{X}_i, \mathbf{X}_j\right) = \exp\left( -\frac{\| \mathbf{X}_i - \mathbf{X}_j\|_2^2}{2\sigma^2}\right)\)</span></div></blockquote>
+<p>Regression coefficients are obtained through kernel matrix inversion and multiplication with reference labels</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\boldsymbol{\alpha} = (\mathbf{K} + \lambda \mathbf{I})^{-1} \mathbf{y}\)</span></div></blockquote>
+</div>
+<div class="section" id="tutorial-exercises">
+<h2>Tutorial exercises<a class="headerlink" href="#tutorial-exercises" title="Permalink to this headline">¶</a></h2>
+<p>Clone the following GIT repository to access the necessary scripts and QM7 dataset (atomization energies and relaxed geometries at PBE0/def2-TZVP level of theory) for ~7k GDB1-7 molecules. <a class="footnote-reference" href="#rupp" id="id1">[1]</a> <a class="footnote-reference" href="#ruddigkeit" id="id2">[2]</a></p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">qmlcode</span><span class="o">/</span><span class="n">tutorial</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Additionally, the repository contains Python3 scripts with the solutions to each exercise.</p>
+</div>
+<div class="section" id="exercise-1-representations">
+<h2>Exercise 1: Representations<a class="headerlink" href="#exercise-1-representations" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we use qml~to generate the Coulomb matrix and Bag of bonds (BoB) representations. <a class="footnote-reference" href="#montavon" id="id3">[3]</a>
+In QML data can be parsed via the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class, which stores data and generates representations in Numpy’s ndarray format.
+If you run the code below, you will read in the file <code class="docutils literal notranslate"><span class="pre">qm7/0001.xyz</span></code> (a methane molecule) and generate a coulomb matrix representation (sorted by row-norm) and a BoB representation.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qml</span>
+
+<span class="c1"># Create the compound object mol from the file qm7/0001.xyz which happens to be methane</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">qml</span><span class="o">.</span><span class="n">Compound</span><span class="p">(</span><span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;qm7/0001.xyz&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate and print a coulomb matrix for compound with 5 atoms</span>
+<span class="n">mol</span><span class="o">.</span><span class="n">generate_coulomb_matrix</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sorting</span><span class="o">=</span><span class="s2">&quot;row-norm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">representation</span><span class="p">)</span>
+
+<span class="c1"># Generate and print BoB bags for compound containing C and H</span>
+<span class="n">mol</span><span class="o">.</span><span class="n">generate_bob</span><span class="p">(</span><span class="n">asize</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">representation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The representations are simply stored as 1D-vectors.
+Note the keyword <code class="docutils literal notranslate"><span class="pre">size</span></code> which is the largest number of atoms in a molecule occurring in test or training set.
+Additionally, the coulomb matrix can take a sorting scheme as keyword, and the BoB representations requires the specifications of how many atoms of a certain type to make room for in the representations.</p>
+<p>Lastly, you can print the following properties which is read from the XYZ file:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print other properties stored in the object</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">coordinates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">atomtypes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">nuclear_charges</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">unit_cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-2-kernels">
+<h2>Exercise 2: Kernels<a class="headerlink" href="#exercise-2-kernels" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we generate a Gaussian kernel matrix, <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>, using the representations, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, which are generated similarly to the example in the previous exercise:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp\left( -\frac{\| \mathbf{X}_i - \mathbf{X}_j\|_2^2}{2\sigma^2}\right)\)</span></div></blockquote>
+<p>QML supplies functions to generate the most basic kernels (E.g. Gaussian, Laplacian). In the exercise below, we calculate a Gaussian kernel for the QM7 dataset.
+In order to save time you can import the entire QM7 dataset as <code class="docutils literal notranslate"><span class="pre">Compound</span></code> objects from the file <code class="docutils literal notranslate"><span class="pre">tutorial_data.py</span></code> found in the tutorial GitHub repository.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import QM7, already parsed to QML</span>
+<span class="kn">from</span> <span class="nn">tutorial_data</span> <span class="k">import</span> <span class="n">compounds</span>
+
+<span class="kn">from</span> <span class="nn">qml.kernels</span> <span class="k">import</span> <span class="n">gaussian_kernel</span>
+
+<span class="c1"># For every compound generate a coulomb matrix or BoB</span>
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">compounds</span><span class="p">:</span>
+
+    <span class="n">mol</span><span class="o">.</span><span class="n">generate_coulomb_matrix</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">sorting</span><span class="o">=</span><span class="s2">&quot;row-norm&quot;</span><span class="p">)</span>
+    <span class="c1"># mol.generate_bob(size=23, asize={&quot;O&quot;:3, &quot;C&quot;:7, &quot;N&quot;:3, &quot;H&quot;:16, &quot;S&quot;:1})</span>
+
+<span class="c1"># Make a big 2D array with all the representations</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mol</span><span class="o">.</span><span class="n">representation</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">compounds</span><span class="p">])</span>
+
+<span class="c1"># Print all representations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Run on only a subset of the first 100 (for speed)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="c1"># Define the kernel width</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">1000.0</span>
+
+<span class="c1"># K is also a Numpy array</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># Print the kernel</span>
+<span class="nb">print</span> <span class="n">K</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-3-regression">
+<h2>Exercise 3: Regression<a class="headerlink" href="#exercise-3-regression" title="Permalink to this headline">¶</a></h2>
+<p>With the kernel matrix and representations sorted out in the previous two exercise, we can now solve the <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> regression coefficients:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\boldsymbol{\alpha} = (\mathbf{K} + \lambda \mathbf{I})^{-1} \mathbf{y}\label{eq:inv}\)</span></div></blockquote>
+<p>One of the most efficient ways of solving this equation is using a Cholesky-decomposition.
+QML includes a function named <code class="docutils literal notranslate"><span class="pre">cho_solve()</span></code> to do this via the math module <code class="docutils literal notranslate"><span class="pre">qml.math</span></code>.
+In this step it is convenient to only use a subset of the full dataset as training data (see below).
+The following builds on the code from the previous step.
+To save time, you can import the PBE0/def2-TZVP atomization energies for the QM7 dataset from the file <code class="docutils literal notranslate"><span class="pre">tutorial_data.py</span></code>.
+This has been sorted to match the ordering of the representations generated in the previous exercise.
+Extend your code from the previous step with the code below:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qml.math</span> <span class="k">import</span> <span class="n">cho_solve</span>
+<span class="kn">from</span> <span class="nn">tutorial_data</span> <span class="k">import</span> <span class="n">energy_pbe0</span>
+
+<span class="c1"># Assign 1000 first molecules to the training set</span>
+<span class="n">X_training</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">Y_training</span> <span class="o">=</span> <span class="n">energy_pbe0</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">4000.0</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">X_training</span><span class="p">,</span> <span class="n">X_training</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+
+<span class="c1"># Add a small lambda to the diagonal of the kernel matrix</span>
+<span class="n">K</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">diag_indices_from</span><span class="p">(</span><span class="n">K</span><span class="p">)]</span> <span class="o">+=</span> <span class="mf">1e-8</span>
+
+<span class="c1"># Use the built-in Cholesky-decomposition to solve</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">cho_solve</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">Y_training</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-4-prediction">
+<h2>Exercise 4: Prediction<a class="headerlink" href="#exercise-4-prediction" title="Permalink to this headline">¶</a></h2>
+<p>With the <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> regression coefficients from the previous step, we have (successfully) trained the machine, and we are now ready to do predictions for other compounds.
+This is done using the following equation:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(y\left(\widetilde{\mathbf{X}} \right) = \sum_i \alpha_i \  K\left( \widetilde{\mathbf{X}}, \mathbf{X}_i\right)\)</span></div></blockquote>
+<p>In this step we further divide the dataset into a training and a test set. Try using the last 1000 entries as test set.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign 1000 last molecules to the test set</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">energy_pbe0</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span>
+
+<span class="c1"># calculate a kernel matrix between test and training data, using the same sigma</span>
+<span class="n">Ks</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">X_training</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># Make the predictions</span>
+<span class="n">Y_predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ks</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Calculate mean-absolute-error (MAE):</span>
+<span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y_predicted</span> <span class="o">-</span> <span class="n">Y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-5-learning-curves">
+<h2>Exercise 5: Learning curves<a class="headerlink" href="#exercise-5-learning-curves" title="Permalink to this headline">¶</a></h2>
+<p>Repeat the prediction from Exercise 2.4 with training set sizes of 1000, 2000, and 4000 molecules.
+Note the MAE for every training size.
+Plot a learning curve of the MAE versus the training set size.
+Generate a learning curve for the Gaussian and Laplacian kernels, as well using the coulomb matrix and bag-of-bonds representations.
+Which combination gives the best learning curve? Note you will have to adjust the kernel width (sigma) underway.</p>
+</div>
+<div class="section" id="exercise-6-delta-learning">
+<h2>Exercise 6: Delta learning<a class="headerlink" href="#exercise-6-delta-learning" title="Permalink to this headline">¶</a></h2>
+<p>A powerful technique in machine learning is the delta learning approach. Instead of predicting the PBE0/def2-TZVP atomization energies, we shall try to predict the difference between DFTB3 (a semi-empirical quantum method) and PBE0 atomization energies.
+Instead of importing the <code class="docutils literal notranslate"><span class="pre">energy_pbe0</span></code> data, you can import the <code class="docutils literal notranslate"><span class="pre">energy_delta</span></code> and use this instead</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tutorial_data</span> <span class="k">import</span> <span class="n">energy_delta</span>
+
+<span class="n">Y_training</span> <span class="o">=</span> <span class="n">energy_delta</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">energy_delta</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>Finally re-draw one of the learning curves from the previous exercise, and note how the prediction improves.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="rupp" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Rupp et al, Phys Rev Letters, 2012.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="ruddigkeit" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Ruddigkeit et al, J Chem Inf Model, 2012.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="montavon" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Montavon et al, New J Phys, 2013.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="citation.html" class="btn btn-neutral" title="Citing use of QML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Anders S. Christensen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

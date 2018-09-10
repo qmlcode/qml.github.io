@@ -1,0 +1,1456 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python API documentation &mdash; QML 0.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QML
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GETTING STARTED:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citing use of QML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">QML Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SOURCE DOCUMENTATION:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python API documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.representations">qml.representations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.kernels">qml.kernels module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.distance">qml.distance module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.math">qml.math module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qml-compound-class">qml.Compound class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.fchl">qml.fchl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-qml.wrappers">qml.wrappers module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QML</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Python API documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/qml.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-api-documentation">
+<h1>Python API documentation<a class="headerlink" href="#python-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-qml.representations">
+<span id="qml-representations-module"></span><h2>qml.representations module<a class="headerlink" href="#module-qml.representations" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.representations.generate_atomic_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_atomic_coulomb_matrix</code><span class="sig-paren">(</span><em>nuclear_charges</em>, <em>coordinates</em>, <em>size=23</em>, <em>sorting='distance'</em>, <em>central_cutoff=1000000.0</em>, <em>central_decay=-1</em>, <em>interaction_cutoff=1000000.0</em>, <em>interaction_decay=-1</em>, <em>indices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_atomic_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Coulomb Matrix representation of the local environment of a central atom.
+For each central atom <span class="math notranslate nohighlight">\(k\)</span>, a matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij}(k) =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} \cdot f_{ik}^2 &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|} \cdot f_{ik}f_{jk}f_{ij} &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.</p>
+<p><span class="math notranslate nohighlight">\(f_{ij}\)</span> is a function that masks long range effects:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f_{ij} =
+  \begin{cases}
+     1 &amp; \text{if } \|{\bf R}_{i} - {\bf R}_{j} \| \leq r - \Delta r \\
+     \tfrac{1}{2} \big(1 + \cos\big(\pi \tfrac{\|{\bf R}_{i} - {\bf R}_{j} \|
+        - r + \Delta r}{\Delta r} \big)\big)     
+        &amp; \text{if } r - \Delta r &lt; \|{\bf R}_{i} - {\bf R}_{j} \| \leq r - \Delta r \\
+     0 &amp; \text{if } \|{\bf R}_{i} - {\bf R}_{j} \| &gt; r
+  \end{cases},\end{split}\]</div>
+<p>where the parameters <code class="docutils literal notranslate"><span class="pre">central_cutoff</span></code> and <code class="docutils literal notranslate"><span class="pre">central_decay</span></code> corresponds to the variables
+<span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\Delta r\)</span> respectively for interactions involving the central atom,
+and <code class="docutils literal notranslate"><span class="pre">interaction_cutoff</span></code> and <code class="docutils literal notranslate"><span class="pre">interaction_decay</span></code> corresponds to the variables
+<span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\Delta r\)</span> respectively for interactions not involving the central atom.</p>
+<p>if <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'row-norm'</span></code>, the atom indices are ordered such that</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\sum_j M_{1j}(k)^2 \geq \sum_j M_{2j}(k)^2 \geq ... \geq \sum_j M_{nj}(k)^2\)</span></div></blockquote>
+<p>if <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'distance'</span></code>, the atom indices are ordered such that</p>
+<div class="math notranslate nohighlight">
+\[\|{\bf R}_{1} - {\bf R}_{k}\| \leq \|{\bf R}_{2} - {\bf R}_{k}\|
+    \leq ... \leq \|{\bf R}_{n} - {\bf R}_{k}\|\]</div>
+<p>The upper triangular of M, including the diagonal, is concatenated to a 1D
+vector representation.</p>
+<p>The representation can be calculated for a subset by either specifying
+<code class="docutils literal notranslate"><span class="pre">indices</span> <span class="pre">=</span> <span class="pre">[0,1,...]</span></code>, where <span class="math notranslate nohighlight">\([0,1,...]\)</span> are the requested atom indices,
+or by specifying <code class="docutils literal notranslate"><span class="pre">indices</span> <span class="pre">=</span> <span class="pre">'C'</span></code> to only calculate central carbon atoms.</p>
+<p>The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – Nuclear charges of the atoms in the molecule</li>
+<li><strong>coordinates</strong> (<em>numpy array</em>) – 3D Coordinates of the atoms in the molecule</li>
+<li><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</li>
+<li><strong>sorting</strong> (<em>string</em>) – How the atom indices are sorted (‘row-norm’, ‘distance’)</li>
+<li><strong>central_cutoff</strong> (<em>float</em>) – The distance from the central atom, where the coulomb interaction
+element will be zero</li>
+<li><strong>central_decay</strong> (<em>float</em>) – The distance over which the the coulomb interaction decays from full to none</li>
+<li><strong>interaction_cutoff</strong> (<em>float</em>) – The distance between two non-central atom, where the coulomb interaction
+element will be zero</li>
+<li><strong>interaction_decay</strong> (<em>float</em>) – The distance over which the the coulomb interaction decays from full to none</li>
+<li><strong>indices</strong> (<em>Nonetype/array/string</em>) – Subset indices or atomtype</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nD representation - shape (<span class="math notranslate nohighlight">\(N_{atoms}\)</span>, size(size+1)/2)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_bob">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_bob</code><span class="sig-paren">(</span><em>nuclear_charges</em>, <em>coordinates</em>, <em>atomtypes</em>, <em>size=23</em>, <em>asize={'C': 7</em>, <em>'H': 16</em>, <em>'N': 3</em>, <em>'O': 3</em>, <em>'S': 1}</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_bob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Bag of Bonds (BOB) representation of a molecule.
+The representation expands on the coulomb matrix representation.
+For each element a bag (vector) is constructed for self interactions
+(e.g. (‘C’, ‘H’, ‘O’)).
+For each element pair a bag is constructed for interatomic interactions
+(e.g. (‘CC’, ‘CH’, ‘CO’, ‘HH’, ‘HO’, ‘OO’)), sorted by value.
+The self interaction of element <span class="math notranslate nohighlight">\(I\)</span> is given by</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\tfrac{1}{2} Z_{I}^{2.4}\)</span>,</div></blockquote>
+<p>with <span class="math notranslate nohighlight">\(Z_{i}\)</span> being the nuclear charge of element <span class="math notranslate nohighlight">\(i\)</span>
+The interaction between atom <span class="math notranslate nohighlight">\(i\)</span> of element <span class="math notranslate nohighlight">\(I\)</span> and 
+atom <span class="math notranslate nohighlight">\(j\)</span> of element <span class="math notranslate nohighlight">\(J\)</span> is given by</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\frac{Z_{I}Z_{J}}{\| {\bf R}_{i} - {\bf R}_{j}\|}\)</span></div></blockquote>
+<p>with <span class="math notranslate nohighlight">\(R_{i}\)</span> being the euclidean coordinate of atom <span class="math notranslate nohighlight">\(i\)</span>.
+The sorted bags are concatenated to an 1D vector representation.
+The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – Nuclear charges of the atoms in the molecule</li>
+<li><strong>coordinates</strong> (<em>numpy array</em>) – 3D Coordinates of the atoms in the molecule</li>
+<li><strong>size</strong> (<em>integer</em>) – The maximum number of atoms in the representation</li>
+<li><strong>asize</strong> (<em>dictionary</em>) – The maximum number of atoms of each element type supported by the representation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D representation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_coulomb_matrix</code><span class="sig-paren">(</span><em>nuclear_charges</em>, <em>coordinates</em>, <em>size=23</em>, <em>sorting='row-norm'</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Coulomb Matrix representation of a molecule.
+Sorting of the elements can either be done by <code class="docutils literal notranslate"><span class="pre">sorting=&quot;row-norm&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">sorting=&quot;unsorted&quot;</span></code>.
+A matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij} =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|}       &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.
+If <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'row-norm'</span></code>, the atom indices are reordered such that</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\sum_j M_{1j}^2 \geq \sum_j M_{2j}^2 \geq ... \geq \sum_j M_{nj}^2\)</span></div></blockquote>
+<p>The upper triangular of M, including the diagonal, is concatenated to a 1D
+vector representation.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'unsorted</span></code>, the elements are sorted in the same order as the input coordinates
+and nuclear charges.</p>
+<p>The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – Nuclear charges of the atoms in the molecule</li>
+<li><strong>coordinates</strong> (<em>numpy array</em>) – 3D Coordinates of the atoms in the molecule</li>
+<li><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</li>
+<li><strong>sorting</strong> (<em>string</em>) – How the atom indices are sorted (‘row-norm’, ‘unsorted’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D representation - shape (size(size+1)/2,)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_eigenvalue_coulomb_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_eigenvalue_coulomb_matrix</code><span class="sig-paren">(</span><em>nuclear_charges</em>, <em>coordinates</em>, <em>size=23</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_eigenvalue_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an eigenvalue Coulomb Matrix representation of a molecule.
+A matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij} =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|}       &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.
+The molecular representation of the molecule is then the sorted eigenvalues of M.
+The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – Nuclear charges of the atoms in the molecule</li>
+<li><strong>coordinates</strong> (<em>numpy array</em>) – 3D Coordinates of the atoms in the molecule</li>
+<li><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D representation - shape (size, )</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.generate_slatm">
+<code class="descclassname">qml.representations.</code><code class="descname">generate_slatm</code><span class="sig-paren">(</span><em>coordinates, nuclear_charges, mbtypes, unit_cell=None, local=False, sigmas=[0.05, 0.05], dgrids=[0.03, 0.03], rcut=4.8, alchemy=False, pbc='000', rpower=6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.generate_slatm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Spectrum of London and Axillrod-Teller-Muto potential (SLATM) representation.
+Both global (<code class="docutils literal notranslate"><span class="pre">local=False</span></code>) and local (<code class="docutils literal notranslate"><span class="pre">local=True</span></code>) SLATM are available.</p>
+<p>A version that works for periodic boundary conditions will be released soon.</p>
+<p>NOTE: You will need to run the <code class="docutils literal notranslate"><span class="pre">get_slatm_mbtypes()</span></code> function to get the <code class="docutils literal notranslate"><span class="pre">mbtypes</span></code> input (or generate it manually).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coordinates</strong> (<em>numpy array</em>) – Input coordinates</li>
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – List of nuclear charges.</li>
+<li><strong>mbtypes</strong> (<em>list</em>) – Many-body types for the whole dataset, including 1-, 2- and 3-body types. Could be obtained by calling <code class="docutils literal notranslate"><span class="pre">get_slatm_mbtypes()</span></code>.</li>
+<li><strong>local</strong> (<em>bool</em>) – Generate a local representation. Defaulted to False (i.e., global representation); otherwise, atomic version.</li>
+<li><strong>sigmas</strong> (<em>list</em>) – Controlling the width of Gaussian smearing function for 2- and 3-body parts, defaulted to [0.05,0.05], usually these do not need to be adjusted.</li>
+<li><strong>dgrids</strong> (<em>list</em>) – The interval between two sampled internuclear distances and angles, defaulted to [0.03,0.03], no need for change, compromised for speed and accuracy.</li>
+<li><strong>rcut</strong> (<em>float</em>) – Cut-off radius, defaulted to 4.8 Angstrom.</li>
+<li><strong>alchemy</strong> (<em>bool</em>) – Swith to use the alchemy version of SLATM. (default=False)</li>
+<li><strong>pbc</strong> (<em>string</em>) – defaulted to ‘000’, meaning it’s a molecule; the three digits in the string corresponds to x,y,z direction</li>
+<li><strong>rpower</strong> (<em>float</em>) – The power of R in 2-body potential, defaulted to London potential (=6).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D SLATM representation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.get_slatm_mbtypes">
+<code class="descclassname">qml.representations.</code><code class="descname">get_slatm_mbtypes</code><span class="sig-paren">(</span><em>nuclear_charges</em>, <em>pbc='000'</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.get_slatm_mbtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of minimal types of many-body terms in a dataset. This resulting list
+is necessary as input in the <code class="docutils literal notranslate"><span class="pre">generate_slatm_representation()</span></code> function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nuclear_charges</strong> (<em>list of numpy arrays</em>) – A list of the nuclear charges for each compound in the dataset.</li>
+<li><strong>pbc</strong> (<em>string</em>) – periodic boundary condition along x,y,z direction, defaulted to ‘000’, i.e., molecule</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing the types of many-body terms.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.representations.vector_to_matrix">
+<code class="descclassname">qml.representations.</code><code class="descname">vector_to_matrix</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.representations.vector_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a representation from 1D vector to 2D square matrix.
+:param v: 1D input representation.
+:type v: numpy array 
+:return: Square matrix representation.
+:rtype: numpy array</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.kernels">
+<span id="qml-kernels-module"></span><h2>qml.kernels module<a class="headerlink" href="#module-qml.kernels" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.kernels.gaussian_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">gaussian_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.gaussian_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of representations - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of representations - shape (M, representation size).</li>
+<li><strong>sigma</strong> (<em>float</em>) – The value of sigma in the kernel matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Gaussian kernel matrix - shape (N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.get_local_kernels_gaussian">
+<code class="descclassname">qml.kernels.</code><code class="descname">get_local_kernels_gaussian</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>na</em>, <em>nb</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.get_local_kernels_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, for a local representation where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \sum_{a \in i} \sum_{b \in j} \exp \big( -\frac{\|A_a - B_b\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{a}\)</span> and <span class="math notranslate nohighlight">\(B_{b}\)</span> are representation vectors.</p>
+<p>Note that the input array is one big 2D array with all atoms concatenated along the same axis.
+Further more a series of kernels is produced (since calculating the distance matrix is expensive
+but getting the resulting kernels elements for several sigmas is not.)</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (total atoms A, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (total atoms B, representation size).</li>
+<li><strong>na</strong> (<em>numpy array</em>) – 1D array containing numbers of atoms in each compound.</li>
+<li><strong>nb</strong> (<em>numpy array</em>) – 1D array containing numbers of atoms in each compound.</li>
+<li><strong>sigma</strong> (<em>float</em>) – The value of sigma in the kernel matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Gaussian kernel matrix - shape (nsigmas, N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.get_local_kernels_laplacian">
+<code class="descclassname">qml.kernels.</code><code class="descname">get_local_kernels_laplacian</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>na</em>, <em>nb</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.get_local_kernels_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Local Laplacian kernel matrix K, for a local representation where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \sum_{a \in i} \sum_{b \in j} \exp \big( -\frac{\|A_a - B_b\|_1}{\sigma} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{a}\)</span> and <span class="math notranslate nohighlight">\(B_{b}\)</span> are representation vectors.</p>
+<p>Note that the input array is one big 2D array with all atoms concatenated along the same axis.
+Further more a series of kernels is produced (since calculating the distance matrix is expensive
+but getting the resulting kernels elements for several sigmas is not.)</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (M, representation size).</li>
+<li><strong>na</strong> (<em>numpy array</em>) – 1D array containing numbers of atoms in each compound.</li>
+<li><strong>nb</strong> (<em>numpy array</em>) – 1D array containing numbers of atoms in each compound.</li>
+<li><strong>sigmas</strong> (<em>list</em>) – List of the sigmas.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Laplacian kernel matrix - shape (nsigmas, N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.laplacian_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">laplacian_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.laplacian_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Laplacian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_1}{\sigma} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of representations - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of representations - shape (M, representation size).</li>
+<li><strong>sigma</strong> (<em>float</em>) – The value of sigma in the kernel matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Laplacian kernel matrix - shape (N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.linear_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">linear_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.linear_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the linear kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = A_i \cdot B_j\)</span></div></blockquote>
+<p>VWhere <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are  representation vectors.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of representations - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of representations - shape (M, representation size).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Gaussian kernel matrix - shape (N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.matern_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">matern_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em>, <em>order=0</em>, <em>metric='l1'</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.matern_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Matern kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>for order = 0:</dt>
+<dd><span class="math notranslate nohighlight">\(K_{ij} = \exp\big( -\frac{d}{\sigma} \big)\)</span></dd>
+<dt>for order = 1:</dt>
+<dd><span class="math notranslate nohighlight">\(K_{ij} = \exp\big( -\frac{\sqrt{3} d}{\sigma} \big) \big(1 + \frac{\sqrt{3} d}{\sigma} \big)\)</span></dd>
+<dt>for order = 2:</dt>
+<dd><span class="math notranslate nohighlight">\(K_{ij} = \exp\big( -\frac{\sqrt{5} d}{d} \big) \big( 1 + \frac{\sqrt{5} d}{\sigma} + \frac{5 d^2}{3\sigma^2} \big)\)</span></dd>
+</dl>
+</div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_i\)</span> and <span class="math notranslate nohighlight">\(B_j\)</span> are representation vectors, and d is a distance measure.</p>
+<p>K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of representations - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of representations - shape (M, representation size).</li>
+<li><strong>sigma</strong> (<em>float</em>) – The value of sigma in the kernel matrix.</li>
+<li><strong>order</strong> (<em>integer</em>) – The order of the polynomial (0, 1, 2)</li>
+<li><strong>metric</strong> (<em>string</em>) – The distance metric (‘l1’, ‘l2’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Matern kernel matrix - shape (N, M)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.kernels.sargan_kernel">
+<code class="descclassname">qml.kernels.</code><code class="descname">sargan_kernel</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigma</em>, <em>gammas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.kernels.sargan_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Sargan kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\| A_i - B_j \|_1)}{\sigma} \big) \big(1 + \sum_{k} \frac{\gamma_{k} \| A_i - B_j \|_1^k}{\sigma^k} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+K is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of representations - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of representations - shape (M, representation size).</li>
+<li><strong>sigma</strong> (<em>float</em>) – The value of sigma in the kernel matrix.</li>
+<li><strong>gammas</strong> (<em>numpy array</em>) – 1D array of parameters in the kernel matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Sargan kernel matrix - shape (N, M).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.distance">
+<span id="qml-distance-module"></span><h2>qml.distance module<a class="headerlink" href="#module-qml.distance" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.distance.l2_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">l2_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.l2_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the L2 distances, D, between two
+Numpy arrays of representations.</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(D_{ij} = \|A_i - B_j\|_2\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+D is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (M, representation size).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The L2-distance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.distance.manhattan_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">manhattan_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.manhattan_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Manhattan distances, D,  between two
+Numpy arrays of representations.</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(D_{ij} = \|A_i - B_j\|_1\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+D is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (M, representation size).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The Manhattan-distance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.distance.p_distance">
+<code class="descclassname">qml.distance.</code><code class="descname">p_distance</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>p=2</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.distance.p_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the p-norm distances between two
+Numpy arrays of representations.
+The value of the keyword argument <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span></code> sets the norm order. 
+E.g. <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">2.0</span></code> with yield the Manhattan and L2 distances, respectively.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[D_{ij} = \|A_i - B_j\|_p\]</div>
+</div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are representation vectors.
+D is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (N, representation size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – 2D array of descriptors - shape (M, representation size).</li>
+<li><strong>p</strong> (<em>float</em>) – The norm order</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The distance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.math">
+<span id="qml-math-module"></span><h2>qml.math module<a class="headerlink" href="#module-qml.math" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.math.bkf_invert">
+<code class="descclassname">qml.math.</code><code class="descname">bkf_invert</code><span class="sig-paren">(</span><em>A</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.math.bkf_invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse of a positive definite matrix, using a Cholesky decomposition
+via calls to LAPACK dpotrf and dpotri in the F2PY module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>numpy array</em>) – Matrix (symmetric and positive definite, left-hand side).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The inverse matrix</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.math.bkf_solve">
+<code class="descclassname">qml.math.</code><code class="descname">bkf_solve</code><span class="sig-paren">(</span><em>A</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.math.bkf_solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves the equation</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(A x = y\)</span></div></blockquote>
+<p>for x using a Cholesky decomposition  via calls to LAPACK dpotrf and dpotrs in the F2PY module. Preserves the input matrix A.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Matrix (symmetric and positive definite, left-hand side).</li>
+<li><strong>y</strong> (<em>numpy array</em>) – Vector (right-hand side of the equation).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The solution vector.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.math.cho_invert">
+<code class="descclassname">qml.math.</code><code class="descname">cho_invert</code><span class="sig-paren">(</span><em>A</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.math.cho_invert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse of a positive definite matrix, using a Cholesky decomposition
+via calls to LAPACK dpotrf and dpotri in the F2PY module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>A</strong> (<em>numpy array</em>) – Matrix (symmetric and positive definite, left-hand side).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The inverse matrix</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.math.cho_solve">
+<code class="descclassname">qml.math.</code><code class="descname">cho_solve</code><span class="sig-paren">(</span><em>A</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.math.cho_solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves the equation</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(A x = y\)</span></div></blockquote>
+<p>for x using a Cholesky decomposition  via calls to LAPACK dpotrf and dpotrs in the F2PY module. Preserves the input matrix A.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Matrix (symmetric and positive definite, left-hand side).</li>
+<li><strong>y</strong> (<em>numpy array</em>) – Vector (right-hand side of the equation).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The solution vector.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="qml-compound-class">
+<h2>qml.Compound class<a class="headerlink" href="#qml-compound-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qml.Compound">
+<em class="property">class </em><code class="descclassname">qml.</code><code class="descname">Compound</code><span class="sig-paren">(</span><em>xyz=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Compound</span></code> class is used to store data from</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>xyz</strong> (<em>string</em>) – Option to initialize the <code class="docutils literal notranslate"><span class="pre">Compound</span></code> with data from an XYZ file.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="qml.Compound.generate_atomic_coulomb_matrix">
+<code class="descname">generate_atomic_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em>, <em>sorting='row-norm'</em>, <em>central_cutoff=1000000.0</em>, <em>central_decay=-1</em>, <em>interaction_cutoff=1000000.0</em>, <em>interaction_decay=-1</em>, <em>indices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_atomic_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Coulomb Matrix representation of the local environment of a central atom.
+For each central atom <span class="math notranslate nohighlight">\(k\)</span>, a matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij}(k) =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} \cdot f_{ik}^2 &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|} \cdot f_{ik}f_{jk}f_{ij} &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.</p>
+<p><span class="math notranslate nohighlight">\(f_{ij}\)</span> is a function that masks long range effects:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f_{ij} =
+  \begin{cases}
+     1 &amp; \text{if } \|{\bf R}_{i} - {\bf R}_{j} \| \leq r - \Delta r \\
+     \tfrac{1}{2} \big(1 + \cos\big(\pi \tfrac{\|{\bf R}_{i} - {\bf R}_{j} \|
+        - r + \Delta r}{\Delta r} \big)\big)     
+        &amp; \text{if } r - \Delta r &lt; \|{\bf R}_{i} - {\bf R}_{j} \| \leq r - \Delta r \\
+     0 &amp; \text{if } \|{\bf R}_{i} - {\bf R}_{j} \| &gt; r
+  \end{cases},\end{split}\]</div>
+<p>where the parameters <code class="docutils literal notranslate"><span class="pre">central_cutoff</span></code> and <code class="docutils literal notranslate"><span class="pre">central_decay</span></code> corresponds to the variables
+<span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\Delta r\)</span> respectively for interactions involving the central atom,
+and <code class="docutils literal notranslate"><span class="pre">interaction_cutoff</span></code> and <code class="docutils literal notranslate"><span class="pre">interaction_decay</span></code> corresponds to the variables
+<span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\Delta r\)</span> respectively for interactions not involving the central atom.</p>
+<p>if <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'row-norm'</span></code>, the atom indices are ordered such that</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\sum_j M_{1j}(k)^2 \geq \sum_j M_{2j}(k)^2 \geq ... \geq \sum_j M_{nj}(k)^2\)</span></div></blockquote>
+<p>if <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'distance'</span></code>, the atom indices are ordered such that</p>
+<div class="math notranslate nohighlight">
+\[\|{\bf R}_{1} - {\bf R}_{k}\| \leq \|{\bf R}_{2} - {\bf R}_{k}\|
+    \leq ... \leq \|{\bf R}_{n} - {\bf R}_{k}\|\]</div>
+<p>The upper triangular of M, including the diagonal, is concatenated to a 1D
+vector representation.</p>
+<p>The representation can be calculated for a subset by either specifying
+<code class="docutils literal notranslate"><span class="pre">indices</span> <span class="pre">=</span> <span class="pre">[0,1,...]</span></code>, where <span class="math notranslate nohighlight">\([0,1,...]\)</span> are the requested atom indices,
+or by specifying <code class="docutils literal notranslate"><span class="pre">indices</span> <span class="pre">=</span> <span class="pre">'C'</span></code> to only calculate central carbon atoms.</p>
+<p>The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</li>
+<li><strong>sorting</strong> (<em>string</em>) – How the atom indices are sorted (‘row-norm’, ‘distance’)</li>
+<li><strong>central_cutoff</strong> (<em>float</em>) – The distance from the central atom, where the coulomb interaction
+element will be zero</li>
+<li><strong>central_decay</strong> (<em>float</em>) – The distance over which the the coulomb interaction decays from full to none</li>
+<li><strong>interaction_cutoff</strong> (<em>float</em>) – The distance between two non-central atom, where the coulomb interaction
+element will be zero</li>
+<li><strong>interaction_decay</strong> (<em>float</em>) – The distance over which the the coulomb interaction decays from full to none</li>
+<li><strong>indices</strong> (<em>Nonetype/array/string</em>) – Subset indices or atomtype</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nD representation - shape (<span class="math notranslate nohighlight">\(N_{atoms}\)</span>, size(size+1)/2)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.generate_bob">
+<code class="descname">generate_bob</code><span class="sig-paren">(</span><em>size=23</em>, <em>asize={'C': 7</em>, <em>'H': 16</em>, <em>'N': 3</em>, <em>'O': 3</em>, <em>'S': 1}</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_bob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Bag of Bonds (BOB) representation of a molecule.
+The representation expands on the coulomb matrix representation.
+For each element a bag (vector) is constructed for self interactions
+(e.g. (‘C’, ‘H’, ‘O’)).
+For each element pair a bag is constructed for interatomic interactions
+(e.g. (‘CC’, ‘CH’, ‘CO’, ‘HH’, ‘HO’, ‘OO’)), sorted by value.
+The self interaction of element <span class="math notranslate nohighlight">\(I\)</span> is given by</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\tfrac{1}{2} Z_{I}^{2.4}\)</span>,</div></blockquote>
+<p>with <span class="math notranslate nohighlight">\(Z_{i}\)</span> being the nuclear charge of element <span class="math notranslate nohighlight">\(i\)</span>
+The interaction between atom <span class="math notranslate nohighlight">\(i\)</span> of element <span class="math notranslate nohighlight">\(I\)</span> and 
+atom <span class="math notranslate nohighlight">\(j\)</span> of element <span class="math notranslate nohighlight">\(J\)</span> is given by</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\frac{Z_{I}Z_{J}}{\| {\bf R}_{i} - {\bf R}_{j}\|}\)</span></div></blockquote>
+<p>with <span class="math notranslate nohighlight">\(R_{i}\)</span> being the euclidean coordinate of atom <span class="math notranslate nohighlight">\(i\)</span>.
+The sorted bags are concatenated to an 1D vector representation.
+The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>asize</strong> – The maximum number of atoms of each element type supported by the representation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">1D representation</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.generate_coulomb_matrix">
+<code class="descname">generate_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em>, <em>sorting='row-norm'</em>, <em>indices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Coulomb Matrix representation of a molecule.
+A matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij} =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|}       &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.
+if <code class="docutils literal notranslate"><span class="pre">sorting</span> <span class="pre">=</span> <span class="pre">'row-norm'</span></code>, the atom indices are reordered such that</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(\sum_j M_{1j}^2 \geq \sum_j M_{2j}^2 \geq ... \geq \sum_j M_{nj}^2\)</span></div></blockquote>
+<p>The upper triangular of M, including the diagonal, is concatenated to a 1D
+vector representation.
+The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</li>
+<li><strong>sorting</strong> (<em>string</em>) – How the atom indices are sorted (‘row-norm’, ‘unsorted’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D representation - shape (size(size+1)/2,)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.generate_eigenvalue_coulomb_matrix">
+<code class="descname">generate_eigenvalue_coulomb_matrix</code><span class="sig-paren">(</span><em>size=23</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_eigenvalue_coulomb_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an eigenvalue Coulomb Matrix representation of a molecule.
+A matrix <span class="math notranslate nohighlight">\(M\)</span> is constructed with elements</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_{ij} =
+  \begin{cases}
+     \tfrac{1}{2} Z_{i}^{2.4} &amp; \text{if } i = j \\
+     \frac{Z_{i}Z_{j}}{\| {\bf R}_{i} - {\bf R}_{j}\|}       &amp; \text{if } i \neq j
+  \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are atom indices, <span class="math notranslate nohighlight">\(Z\)</span> is nuclear charge and
+<span class="math notranslate nohighlight">\(\bf R\)</span> is the coordinate in euclidean space.
+The molecular representation of the molecule is then the sorted eigenvalues of M.
+The representation is calculated using an OpenMP parallel Fortran routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<em>integer</em>) – The size of the largest molecule supported by the representation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">1D representation - shape (size, )</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.generate_fchl_representation">
+<code class="descname">generate_fchl_representation</code><span class="sig-paren">(</span><em>max_size=23</em>, <em>cell=None</em>, <em>neighbors=24</em>, <em>cut_distance=5.0</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_fchl_representation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the representation for the FCHL-kernel. Note that this representation is incompatible with generic <code class="docutils literal notranslate"><span class="pre">qml.kernel.*</span></code> kernels.
+:param size: Max number of atoms in representation.
+:type size: integer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.generate_slatm">
+<code class="descname">generate_slatm</code><span class="sig-paren">(</span><em>mbtypes, local=False, sigmas=[0.05, 0.05], dgrids=[0.03, 0.03], rcut=4.8, pbc='000', alchemy=False, rpower=6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.generate_slatm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Spectrum of London and Axillrod-Teller-Muto potential (SLATM) representation.
+Both global (<code class="docutils literal notranslate"><span class="pre">local=False</span></code>) and local (<code class="docutils literal notranslate"><span class="pre">local=True</span></code>) SLATM are available.</p>
+<p>A version that works for periodic boundary conditions will be released soon.</p>
+<p>NOTE: You will need to run the <code class="docutils literal notranslate"><span class="pre">get_slatm_mbtypes()</span></code> function to get the <code class="docutils literal notranslate"><span class="pre">mbtypes</span></code> input (or generate it manually).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mbtypes</strong> (<em>list</em>) – Many-body types for the whole dataset, including 1-, 2- and 3-body types. Could be obtained by calling <code class="docutils literal notranslate"><span class="pre">get_slatm_mbtypes()</span></code>.</li>
+<li><strong>local</strong> (<em>bool</em>) – Generate a local representation. Defaulted to False (i.e., global representation); otherwise, atomic version.</li>
+<li><strong>sigmas</strong> (<em>list</em>) – Controlling the width of Gaussian smearing function for 2- and 3-body parts, defaulted to [0.05,0.05], usually these do not need to be adjusted.</li>
+<li><strong>dgrids</strong> (<em>list</em>) – The interval between two sampled internuclear distances and angles, defaulted to [0.03,0.03], no need for change, compromised for speed and accuracy.</li>
+<li><strong>rcut</strong> (<em>float</em>) – Cut-off radius, defaulted to 4.8 Angstrom.</li>
+<li><strong>alchemy</strong> (<em>bool</em>) – Swith to use the alchemy version of SLATM. (default=False)</li>
+<li><strong>pbc</strong> (<em>string</em>) – defaulted to ‘000’, meaning it’s a molecule; the three digits in the string corresponds to x,y,z direction</li>
+<li><strong>rpower</strong> (<em>float</em>) – The power of R in 2-body potential, defaulted to London potential (=6).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1D SLATM representation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="qml.Compound.read_xyz">
+<code class="descname">read_xyz</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.Compound.read_xyz" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Re-)initializes the Compound-object with data from an xyz-file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>string</em>) – Input xyz-filename.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.fchl">
+<span id="qml-fchl-module"></span><h2>qml.fchl module<a class="headerlink" href="#module-qml.fchl" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.fchl.generate_representation">
+<code class="descclassname">qml.fchl.</code><code class="descname">generate_representation</code><span class="sig-paren">(</span><em>coordinates</em>, <em>nuclear_charges</em>, <em>max_size=23</em>, <em>neighbors=23</em>, <em>cut_distance=5.0</em>, <em>cell=None</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.generate_representation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a representation for the FCHL kernel module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coordinates</strong> (<em>numpy array</em>) – Input coordinates.</li>
+<li><strong>nuclear_charges</strong> (<em>numpy array</em>) – List of nuclear charges.</li>
+<li><strong>max_size</strong> (<em>integer</em>) – Max number of atoms in representation.</li>
+<li><strong>neighbors</strong> (<em>integer</em>) – Max number of atoms within the cut-off around an atom. (For periodic systems)</li>
+<li><strong>cell</strong> (<em>numpy array</em>) – Unit cell vectors. The presence of this keyword argument will generate a periodic representation.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Spatial cut-off distance - must be the same as used in the kernel function call.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">FCHL representation, shape = (size,5,neighbors).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_atomic_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_atomic_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_atomic_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, size).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(M, maxsize, 5, size).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, M),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_atomic_symmetric_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_atomic_symmetric_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_atomic_symmetric_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, size).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, M),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_global_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_global_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_global_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, maxneighbors).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(M, maxsize, 5, maxneighbors).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, M),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_global_symmetric_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_global_symmetric_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_global_symmetric_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - A_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(A_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, maxneighbors).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, N),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_local_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_local_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>B</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_local_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - B_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(B_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, maxneighbors).</li>
+<li><strong>B</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(M, maxsize, 5, maxneighbors).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, M),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qml.fchl.get_local_symmetric_kernels">
+<code class="descclassname">qml.fchl.</code><code class="descname">get_local_symmetric_kernels</code><span class="sig-paren">(</span><em>A</em>, <em>sigmas</em>, <em>two_body_scaling=2.8284271247461903</em>, <em>three_body_scaling=1.6</em>, <em>two_body_width=0.2</em>, <em>three_body_width=3.141592653589793</em>, <em>two_body_power=4.0</em>, <em>three_body_power=2.0</em>, <em>cut_start=1.0</em>, <em>cut_distance=5.0</em>, <em>fourier_order=1</em>, <em>alchemy='periodic-table'</em>, <em>alchemy_period_width=1.6</em>, <em>alchemy_group_width=1.6</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.fchl.get_local_symmetric_kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Gaussian kernel matrix K, where <span class="math notranslate nohighlight">\(K_{ij}\)</span>:</p>
+<blockquote>
+<div><span class="math notranslate nohighlight">\(K_{ij} = \exp \big( -\frac{\|A_i - A_j\|_2^2}{2\sigma^2} \big)\)</span></div></blockquote>
+<p>Where <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(A_{j}\)</span> are FCHL representation vectors.
+K is calculated analytically using an OpenMP parallel Fortran routine.
+Note, that this kernel will ONLY work with FCHL representations as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>A</strong> (<em>numpy array</em>) – Array of FCHL representation - shape=(N, maxsize, 5, maxneighbors).</li>
+<li><strong>sigma</strong> (<em>list</em>) – List of kernel-widths.</li>
+<li><strong>two_body_scaling</strong> (<em>float</em>) – Weight for 2-body terms.</li>
+<li><strong>three_body_scaling</strong> (<em>float</em>) – Weight for 3-body terms.</li>
+<li><strong>two_body_width</strong> (<em>float</em>) – Gaussian width for 2-body terms</li>
+<li><strong>three_body_width</strong> (<em>float</em>) – Gaussian width for 3-body terms.</li>
+<li><strong>two_body_power</strong> (<em>float</em>) – Powerlaw for <span class="math notranslate nohighlight">\(r^{-n}\)</span> 2-body terms.</li>
+<li><strong>three_body_power</strong> (<em>float</em>) – Powerlaw for Axilrod-Teller-Muto 3-body term</li>
+<li><strong>cut_start</strong> (<em>float</em>) – The fraction of the cut-off radius at which cut-off damping start.</li>
+<li><strong>cut_distance</strong> (<em>float</em>) – Cut-off radius. (default=5 angstrom)</li>
+<li><strong>fourier_order</strong> (<em>integer</em>) – 3-body Fourier-expansion truncation order.</li>
+<li><strong>alchemy</strong> (<em>string</em>) – Type of alchemical interpolation <code class="docutils literal notranslate"><span class="pre">&quot;periodic-table&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> are possible options. Disabling alchemical interpolation can yield dramatic speedups.</li>
+<li><strong>alchemy_period_width</strong> (<em>float</em>) – Gaussian width along periods (columns) in the periodic table.</li>
+<li><strong>alchemy_group_width</strong> (<em>float</em>) – Gaussian width along groups (rows) in the periodic table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of FCHL kernel matrices matrix - shape=(n_sigmas, N, N),</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-qml.wrappers">
+<span id="qml-wrappers-module"></span><h2>qml.wrappers module<a class="headerlink" href="#module-qml.wrappers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qml.wrappers.arad_local_kernels">
+<code class="descclassname">qml.wrappers.</code><code class="descname">arad_local_kernels</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.arad_local_kernels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.arad_local_symmetric_kernels">
+<code class="descclassname">qml.wrappers.</code><code class="descname">arad_local_symmetric_kernels</code><span class="sig-paren">(</span><em>mols1</em>, <em>sigmas</em>, <em>width=0.2</em>, <em>cut_distance=5.0</em>, <em>r_width=1.0</em>, <em>c_width=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.arad_local_symmetric_kernels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.get_atomic_kernels_gaussian">
+<code class="descclassname">qml.wrappers.</code><code class="descname">get_atomic_kernels_gaussian</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.get_atomic_kernels_gaussian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qml.wrappers.get_atomic_kernels_laplacian">
+<code class="descclassname">qml.wrappers.</code><code class="descname">get_atomic_kernels_laplacian</code><span class="sig-paren">(</span><em>mols1</em>, <em>mols2</em>, <em>sigmas</em><span class="sig-paren">)</span><a class="headerlink" href="#qml.wrappers.get_atomic_kernels_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="examples.html" class="btn btn-neutral" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Anders S. Christensen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.4.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
